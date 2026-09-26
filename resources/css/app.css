@@ -1,45 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
+    --color-background: #FFFFFF;
+    --color-section: #F1E6D6;
+    --color-border: #E5DDD3;
 
-    /* =====================================================
-       COLORS
-       ===================================================== */
+    --color-primary: #C1352A;
+    --color-primary-hover: #9F2B23;
+    --color-primary-light: #D76A61;
+    --color-primary-soft: #F3E1DF;
+    --color-secondary-red: #931C1F;
+    --color-secondary: #7A1E16;
+    --color-secondary-light: #A64A40;
 
-       /* Base */
-    --color-white: #FFFFFF;
-    --color-bg: #FAF9F7;
-    --color-cream: #F5F1EC;
+    --color-accents: #D98A3D;
+    --color-accents-light: #E5A96D;
 
-    /* Primary Red */
-    --color-primary: #9E2F32;
-    --color-primary-hover: #7F2427;
-    --color-primary-light: #C96B6D;
-    --color-primary-soft: #F3E3E3;
-
-    /* Neutral */
-    --color-heading: #292727;
-    --color-text: #5F5B59;
-    --color-text-light: #85807D;
-
-    /* Border */
-    --color-border: #E5E0DC;
-
-
-    /* =====================================================
-       FONT
-       ===================================================== */
+    --color-text: #241B17;
+    --color-text-light: #625954;
+    --color-secondary-black: #1B1A1A;
 
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Jost', sans-serif;
-
-
-    /* =====================================================
-       FONT WEIGHT
-       ===================================================== */
 
     --font-light: 300;
     --font-regular: 400;
@@ -47,42 +32,20 @@
     --font-semibold: 600;
     --font-bold: 700;
 
-
-    /* =====================================================
-       TYPOGRAPHY
-       ===================================================== */
-
     --heading-line-height: 1.2;
     --body-line-height: 1.7;
 
-
-    /* =====================================================
-       SPACING
-       ===================================================== */
-
     --section-padding: 100px;
     --section-padding-mobile: 60px;
-
-
-    /* =====================================================
-       BORDER RADIUS
-       ===================================================== */
 
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
 
-
-    /* =====================================================
-       TRANSITION
-       ===================================================== */
-
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
 }
-
-
 /* =========================================================
    GLOBAL RESET
    ========================================================= */
@@ -177,34 +140,46 @@ a:hover {
    UTILITY
    ========================================================= */
 
+
 .text-primary {
     color: var(--color-primary);
 }
 
-.text-ocean {
-    color: var(--color-ocean);
+.text-accent{
+    color: var(--color-accents);
 }
 
 .text-dark {
-    color: var(--color-heading);
+    color: var(--color-text);
 }
 
 .text-muted {
     color: var(--color-text-light);
 }
 
-.bg-white {
-    background-color: var(--color-white);
+.bg-background {
+    background-color: var(--color-background);
 }
 
-.bg-light {
-    background-color: var(--color-bg);
+.bg-section {
+    background-color: var(--color-section);
 }
 
-.bg-sand {
-    background-color: var(--color-sand);
+.bg-border {
+    background-color: var(--color-border);
 }
 
+.font-heading {
+    font-family: var(--font-heading) !important;
+}
+
+.font-body {
+    font-family: var(--font-body) !important;
+}
+
+.text-on-media {
+    color: #FFFFFF;
+}
 
 /* =========================================================
    SECTION

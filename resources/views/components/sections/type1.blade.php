@@ -1,22 +1,3 @@
-{{--
-    section_data keys:
-        id          string  Section id attribute (for anchor links / nav)
-        tag_title   string  Heading tag to render, e.g. 'h1' or 'h2'
-        title       string  Main wordmark / heading text
-        tagline     string  Optional italic line under the title
-        background  array   [
-                        'type'  => 'image' | 'video' | 'slider',   // default 'image'
-                        'image' => ['url' => ..., 'alt' => ...],   // when type = image
-                        'video' => ['url' => ...],                 // when type = video
-                        'slides' => [                               // when type = slider
-                            ['url' => ..., 'alt' => ...],
-                            ...
-                        ],
-                        'autoplay_delay' => 6000,                  // slider only, ms
-                    ]
-                    Omit entirely to fall back to a plain gradient placeholder.
---}}
-
 @php
     $id        = $section_data['id'] ?? null;
     $tag_title = $section_data['tag_title'] ?? 'h1';
@@ -25,6 +6,7 @@
 
     $background = $section_data['background'] ?? null;
     $bgType     = $background['type'] ?? 'image';
+
     $videoUrl = is_array($background['video'] ?? null)
         ? ($background['video']['url'] ?? null)
         : ($background['video'] ?? null);
@@ -64,12 +46,11 @@
         <div class="absolute inset-0 bg-black/50"></div>
     </div>
     <div class="relative text-center px-6">
-        <{!! $tag_title !!} class="[font-family:var(--font-heading)] font-medium tracking-wide [color:var(--color-white)] text-[clamp(3.2rem,8vw,6rem)] leading-[1.05]">
+        <{!! $tag_title !!} class="font-heading font-medium text-white text-[clamp(3.2rem,8vw,6rem)]">
             {{ $title }}
         </{!! $tag_title !!}>
-
         @if ($tagline)
-            <p class="[font-family:var(--font-heading)] italic [color:var(--color-cream)] opacity-90 text-xl mt-2">
+            <p class="font-heading font-medium italic text-accent text-3xl">
                 {{ $tagline }}
             </p>
         @endif

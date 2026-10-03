@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\FacilityController;
@@ -12,6 +13,15 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SitemapController;
 
+
+Route::get('/clear-cache', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+
+    return "✅ All cache (config, route, view, app) has been cleared.";
+});
 
 Route::controller(LandingController::class)->group(function () {
     Route::get('/', 'index')->name('index');

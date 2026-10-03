@@ -1,0 +1,439 @@
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: var(--font-regular);
+    line-height: var(--body-line-height);
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+
+    font-family: var(--font-heading);
+    font-weight: var(--font-medium);
+    line-height: var(--heading-line-height);
+
+    color: var(--color-heading);
+}
+
+/* =========================================================
+   BODY TEXT
+   ========================================================= */
+
+p, span, li, a, button, input, textarea, select {
+    font-family: var(--font-body);
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: var(--font-medium);
+    letter-spacing: 0.09em;
+
+    transition:
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        border-color var(--transition-normal);
+}
+
+/* di background terang */
+.btn-outline {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-outline:hover {
+    color: var(--color-on-media);
+    background-color: var(--color-primary);
+}
+
+/* di atas gambar / background gelap */
+.btn-outline-light {
+    color: var(--color-on-media);
+    border-color: rgb(255 255 255 / 0.7);
+}
+.btn-outline-light:hover {
+    color: var(--color-secondary-black);
+    background-color: var(--color-on-media);
+}
+
+/* =========================================================
+   SLIDER ARROW  &  INDEX TAB
+   ========================================================= */
+
+.slider-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0.75rem;
+    color: var(--color-secondary-black);
+    transition:
+        color var(--transition-slow),
+        opacity var(--transition-normal);
+}
+.slider-arrow svg {
+    transition: transform var(--transition-slow);
+}
+.slider-arrow:hover {
+    color: var(--color-primary);
+}
+.slider-arrow:hover svg {
+    transform: translateX(4px);
+}
+.slider-arrow.is-prev:hover svg {
+    transform: translateX(-4px);
+}
+.slider-arrow.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+}
+.slider-arrow:focus-visible {
+    outline: 1px solid var(--color-primary);
+    outline-offset: 4px;
+}
+.slider-divider {
+    display: inline-block;
+    width: 1px;
+    height: 1.25rem;
+    background-color: rgb(27 26 26 / 0.25);
+}
+
+.cine-tab {
+    flex: 1;
+    min-width: 0;
+    padding-top: 0.75rem;
+    text-align: left;
+    border-top: 1px solid rgb(255 255 255 / 0.3);
+    color: rgb(255 255 255 / 0.55);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color var(--transition-normal), border-color var(--transition-normal);
+}
+.cine-tab:hover,
+.cine-tab.is-active {
+    color: var(--color-on-media);
+    border-top-color: var(--color-on-media);
+}
+.cine-tab:focus-visible {
+    outline: 1px solid var(--color-on-media);
+    outline-offset: 4px;
+}
+
+.index-tab {
+    border-top: 1px solid rgb(255 255 255 / 0.3);
+    color: rgb(255 255 255 / 0.6);
+    transition:
+        color var(--transition-slow),
+        border-color var(--transition-slow);
+}
+.index-tab:hover {
+    color: var(--color-on-media);
+}
+.index-tab.is-active {
+    border-top-color: var(--color-on-media);
+    color: var(--color-on-media);
+}
+.index-tab:focus-visible {
+    outline: 1px solid var(--color-on-media);
+    outline-offset: 4px;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+#site-navbar {
+    background-color: transparent;
+}
+#site-navbar[data-scrolled="true"] {
+    background-color: var(--color-background);
+    box-shadow: 0 1px 0 var(--color-border);
+}
+
+#site-navbar [data-navbar-link] {
+    color: var(--color-on-media);
+}
+#site-navbar[data-scrolled="true"] [data-navbar-link] {
+    color: var(--color-text);
+}
+#site-navbar [data-navbar-link]:hover {
+    color: var(--color-accent-light);
+}
+#site-navbar[data-scrolled="true"] [data-navbar-link]:hover {
+    color: var(--color-primary);
+}
+
+#site-navbar [data-navbar-logo] {
+    filter: brightness(0) invert(1);
+}
+#site-navbar[data-scrolled="true"] [data-navbar-logo] {
+    filter: none;
+}
+
+#site-navbar [data-navbar-cta] {
+    color: var(--color-on-media);
+    background-color: transparent;
+    border: 1px solid rgb(255 255 255 / 0.7);
+}
+#site-navbar [data-navbar-cta]:hover {
+    background-color: var(--color-on-media);
+    color: var(--color-secondary-black);
+}
+#site-navbar[data-scrolled="true"] [data-navbar-cta] {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-media);
+}
+#site-navbar[data-scrolled="true"] [data-navbar-cta]:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+#site-navbar [data-navbar-burger] {
+    color: var(--color-on-media);
+}
+#site-navbar[data-scrolled="true"] [data-navbar-burger] {
+    color: var(--color-text);
+}
+
+:root {
+    --type10-offset: 97px; /* header height, adjust if needed */
+}
+
+.type10-track {
+    position: relative;
+}
+
+/* Sticky is applied here; `top` is overwritten by JS to center the aside */
+.type10-aside {
+    position: sticky;
+    top: var(--type10-top, var(--type10-offset));
+}
+
+/* Optical alignment: first title's cap-height lines up with the top of the first image */
+.type10-list {
+    margin-top: -0.3em;
+}
+
+.type10-panel {
+    scroll-margin-top: calc(var(--type10-offset) + 2rem);
+}
+
+.type10-link {
+    position: relative;
+    display: inline-block;
+    opacity: 0.3;
+    transition: opacity 0.4s ease;
+}
+
+.type10-link:hover {
+    opacity: 0.6;
+}
+
+.type10-link.is-active {
+    opacity: 1;
+}
+
+/* Small marker line, does not shift the text */
+.type10-link::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.4s ease;
+}
+
+/* Lightbox */
+.type10-lightbox {
+    max-width: 92vw;
+    max-height: 92vh;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.type10-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.type10-lightbox img {
+    display: block;
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+}
+.type10-panel .type10-flyer {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+ 
+/* ---------- Footer link ---------- */
+.f-link {
+    position: relative;
+    display: inline-block;
+    font-size: var(--text-body);
+    line-height: 1.7;
+    color: rgb(255 255 255 / 0.9);
+    transition: color var(--transition-slow);
+}
+.f-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.f-link:hover {
+    color: var(--color-accent);
+}
+.f-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* ---------- Footer social ---------- */
+.f-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: 9999px;
+    border: 1px solid rgb(255 255 255 / 0.35);
+    color: var(--color-on-media);
+    transition:
+        background-color var(--transition-slow),
+        border-color var(--transition-slow),
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.f-social:hover {
+    color: var(--color-on-media);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+/* ---------- Footer wordmark ---------- */
+.f-wordmark {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    gap: 0.2em;
+    height: 0.85em;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: clamp(2.25rem, 9.5vw, 8.5rem);
+
+    /* warna per teks, dipakai oleh gaya bersama di bawah */
+    --wm-stroke: rgb(255 255 255 / 0.32);
+    --wm-fill:   rgb(241 230 214 / 0.95);
+}
+
+/* Gaya bersama: italic, outline saja, terisi saat hover */
+.f-wordmark-main,
+.f-wordmark-sub {
+    flex: none;
+    font-family: var(--font-heading);
+    font-style: italic;
+    line-height: 0.9;
+    letter-spacing: -0.025em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--wm-stroke);
+    -webkit-text-fill-color: transparent;
+    transition:
+        -webkit-text-fill-color 0.8s ease,
+        -webkit-text-stroke-color 0.8s ease;
+}
+
+.f-wordmark:hover .f-wordmark-main,
+.f-wordmark:hover .f-wordmark-sub {
+    -webkit-text-fill-color: var(--wm-fill);
+    -webkit-text-stroke-color: var(--wm-fill);
+}
+
+/* Yang berbeda hanya warna dan ukuran */
+.f-wordmark-sub {
+    --wm-stroke: rgb(217 138 61 / 0.6);  /* accent, outline */
+    --wm-fill:   var(--color-accent);    /* accent, saat hover */
+    font-size: 0.5em;                    /* setengah dari Bali Relaxing */
+}   
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: var(--section-padding-mobile);
+    }
+
+    body {
+        font-size: 15px;
+    }
+}

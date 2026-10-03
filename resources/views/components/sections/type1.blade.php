@@ -1,5 +1,4 @@
 @php
-    $id        = $section_data['id'] ?? null;
     $tag_title = $section_data['tag_title'] ?? 'h1';
     $title     = $section_data['title'] ?? '';
     $tagline   = $section_data['tagline'] ?? null;
@@ -16,7 +15,7 @@
     $imageAlt  = is_array($imageData) ? ($imageData['alt'] ?? $title) : $title;
 @endphp
 
-<section id="{{ $id }}" class="section-type-1 relative h-screen flex items-center justify-center overflow-hidden">
+<section id="{{ $section_data['id'] ?? '' }}" class="section-type-1 relative h-screen flex items-center justify-center overflow-hidden bg-dark">
     <div class="absolute inset-0">
         @if ($bgType === 'video' && !empty($videoUrl))
             <video class="w-full h-full object-cover" src="{{ $videoUrl }}" autoplay muted loop playsinline></video>
@@ -42,15 +41,19 @@
                     }
                 });
             </script>
+        @elseif (!empty($imageUrl))
+            <img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" class="w-full h-full object-cover">
         @endif
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="absolute inset-0 bg-dark opacity-40"></div>
     </div>
+
     <div class="relative text-center px-6">
-        <{!! $tag_title !!} class="font-heading font-medium text-white text-[clamp(3.2rem,8vw,6rem)]">
+        <{!! $tag_title !!} class="font-heading font-medium text-on-media text-fluid-display">
             {{ $title }}
         </{!! $tag_title !!}>
+
         @if ($tagline)
-            <p class="font-heading font-medium italic text-accent text-3xl">
+            <p class="font-heading font-medium italic text-accent text-fluid-h3 mt-2">
                 {{ $tagline }}
             </p>
         @endif

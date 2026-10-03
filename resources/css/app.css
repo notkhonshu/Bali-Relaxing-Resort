@@ -1,27 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "./style.css";
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+
+/* =========================================================
+   DESIGN TOKENS
+   Warna diurutkan dari TERANG -> GELAP (berdasarkan lightness)
+   ========================================================= */
 
 :root {
+    /* 01 - 05 : netral terang */
+    --color-white: #FFFFFF;
     --color-background: #FFFFFF;
+    --color-background-secondary: #F7F7F5;
     --color-section: #F1E6D6;
+    --color-primary-soft: #F3E1DF;
     --color-border: #E5DDD3;
 
-    --color-primary: #C1352A;
-    --color-primary-hover: #9F2B23;
+    /* 06 - 09 : aksen & merah muda-sedang */
+    --color-accent-light: #E5A96D;
+    --color-accent: #D98A3D;
     --color-primary-light: #D76A61;
-    --color-primary-soft: #F3E1DF;
+    --color-primary: #C1352A;
+
+    /* 10 - 15 : merah tua & teks sedang */
+    --color-secondary-light: #A64A40;
+    --color-text-light: #625954;
+    --color-primary-hover: #9F2B23;
     --color-secondary-red: #931C1F;
     --color-secondary: #7A1E16;
-    --color-secondary-light: #A64A40;
 
-    --color-accents: #D98A3D;
-    --color-accents-light: #E5A96D;
-
+    /* 16 - 17 : paling gelap */
     --color-text: #241B17;
-    --color-text-light: #625954;
     --color-secondary-black: #1B1A1A;
+
+    /* alias semantik */
+    --color-heading: var(--color-text);
+    --color-on-media: #FFFFFF;
 
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Jost', sans-serif;
@@ -45,164 +65,76 @@
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-}
-/* =========================================================
-   GLOBAL RESET
-   ========================================================= */
 
-html {
-    scroll-behavior: smooth;
-}
+    /* ---------- FLUID TYPE SCALE (375px -> 1440px) ---------- */
+    --text-display: clamp(3rem, 1.944rem + 4.507vw, 6rem);       
+    --text-h1:      clamp(2.5rem, 1.796rem + 3.005vw, 4.5rem);   
+    --text-h2:      clamp(1.75rem, 1.486rem + 1.127vw, 2.5rem);  
+    --text-h3:      clamp(1.5rem, 1.324rem + 0.751vw, 2rem);     
+    --text-lead:    clamp(1rem, 0.912rem + 0.376vw, 1.25rem);    
+    --text-body:    clamp(0.9375rem, 0.8935rem + 0.188vw, 1.0625rem); 
+    --text-small:   clamp(0.8125rem, 0.7905rem + 0.094vw, 0.875rem);  
 
-body {
-    margin: 0;
-    padding: 0;
-
-    font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: var(--font-regular);
-    line-height: var(--body-line-height);
-
-    color: var(--color-text);
-    background-color: var(--color-white);
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-
-/* =========================================================
-   HEADINGS
-   ========================================================= */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-top: 0;
-
-    font-family: var(--font-heading);
-    font-weight: var(--font-medium);
-    line-height: var(--heading-line-height);
-
-    color: var(--color-heading);
-}
-
-
-/* =========================================================
-   BODY TEXT
-   ========================================================= */
-
-p,
-span,
-li,
-a,
-button,
-input,
-textarea,
-select {
-    font-family: var(--font-body);
-}
-
-
-/* =========================================================
-   LINKS
-   ========================================================= */
-
-a {
-    color: inherit;
-    text-decoration: none;
-    transition: color var(--transition-normal);
-}
-
-a:hover {
-    color: var(--color-primary);
-}
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
-.btn {
-    font-family: var(--font-body);
-    font-weight: var(--font-medium);
-    transition:
-        background-color var(--transition-normal),
-        color var(--transition-normal),
-        border-color var(--transition-normal);
-}
-
-
-/* =========================================================
-   UTILITY
-   ========================================================= */
-
-
-.text-primary {
-    color: var(--color-primary);
-}
-
-.text-accent{
-    color: var(--color-accents);
-}
-
-.text-dark {
-    color: var(--color-text);
-}
-
-.text-muted {
-    color: var(--color-text-light);
-}
-
-.bg-background {
-    background-color: var(--color-background);
-}
-
-.bg-section {
-    background-color: var(--color-section);
-}
-
-.bg-border {
-    background-color: var(--color-border);
-}
-
-.font-heading {
-    font-family: var(--font-heading) !important;
-}
-
-.font-body {
-    font-family: var(--font-body) !important;
-}
-
-.text-on-media {
-    color: #FFFFFF;
 }
 
 /* =========================================================
-   SECTION
+   UTILITIES  (dalam @layer utilities, hover:/md: bisa dipakai)
+   Urutan: terang -> gelap
    ========================================================= */
 
-.section {
-    padding-top: var(--section-padding);
-    padding-bottom: var(--section-padding);
-}
+@layer utilities {
+
+    /* ---------- BACKGROUND ---------- */
+    .bg-background           { background-color: var(--color-background); }            
+    .bg-background-secondary { background-color: var(--color-background-secondary); }  
+    .bg-section              { background-color: var(--color-section); }               
+    .bg-primary-soft         { background-color: var(--color-primary-soft); }          
+    .bg-border               { background-color: var(--color-border); }                
+    .bg-accent-light         { background-color: var(--color-accent-light); }          
+    .bg-accent               { background-color: var(--color-accent); }                
+    .bg-primary-light        { background-color: var(--color-primary-light); }         
+    .bg-primary              { background-color: var(--color-primary); }               
+    .bg-secondary-light      { background-color: var(--color-secondary-light); }       
+    .bg-primary-hover        { background-color: var(--color-primary-hover); }         
+    .bg-secondary-red        { background-color: var(--color-secondary-red); }         
+    .bg-secondary            { background-color: var(--color-secondary); }             
+    .bg-dark                 { background-color: var(--color-secondary-black); }       
+
+    /* ---------- TEXT ---------- */
+    .text-on-media           { color: var(--color-on-media); }                         
+    .text-primary-soft       { color: var(--color-primary-soft); }
+    .text-accent-light       { color: var(--color-accent-light); }
+    .text-accent             { color: var(--color-accent); }
+    .text-primary-light      { color: var(--color-primary-light); }
+    .text-primary            { color: var(--color-primary); }
+    .text-secondary-light    { color: var(--color-secondary-light); }
+    .text-muted,
+    .text-light              { color: var(--color-text-light); }                       
+    .text-primary-hover      { color: var(--color-primary-hover); }
+    .text-secondary-red      { color: var(--color-secondary-red); }
+    .text-secondary          { color: var(--color-secondary); }
+    .text-body               { color: var(--color-text); }                             
+    .text-dark               { color: var(--color-secondary-black); }                  
+
+    /* ---------- BORDER ---------- */
+    .border-theme            { border-color: var(--color-border); }
+    .border-accent           { border-color: var(--color-accent); }
+    .border-primary          { border-color: var(--color-primary); }
+    .border-secondary        { border-color: var(--color-secondary); }
+    .border-dark             { border-color: var(--color-secondary-black); }
+    .border-on-media         { border-color: rgb(255 255 255 / 0.7); }
+
+    /* ---------- FONT ---------- */
+    .font-heading { font-family: var(--font-heading) !important; }
+    .font-body    { font-family: var(--font-body) !important; }
 
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    :root {
-        --section-padding: var(--section-padding-mobile);
-    }
-
-    body {
-        font-size: 15px;
-    }
-
+    /* ---------- FLUID TEXT SIZE ---------- */
+    .text-fluid-display { font-size: var(--text-display); line-height: 1.05; }
+    .text-fluid-h1      { font-size: var(--text-h1);      line-height: 1.1;  }
+    .text-fluid-h2      { font-size: var(--text-h2);      line-height: 1.2;  }
+    .text-fluid-h3      { font-size: var(--text-h3);      line-height: 1.25; }
+    .text-fluid-lead    { font-size: var(--text-lead);    line-height: 1.5;  }
+    .text-fluid-body    { font-size: var(--text-body);    line-height: 1.7;  }
+    .text-fluid-small   { font-size: var(--text-small);   line-height: 1.6;  }   
 }

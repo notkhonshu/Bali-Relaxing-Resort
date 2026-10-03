@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+$base = '/';
+$_SERVER['SCRIPT_NAME'] = $base . '/index.php';
+$_SERVER['PHP_SELF']    = $base . '/index.php';
+
 // Determine if the application is in maintenance mode...
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
